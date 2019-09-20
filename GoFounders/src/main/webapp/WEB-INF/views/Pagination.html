@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+
+function yHandler()
+{
+	var wrap= douument.getElementById('wrap');
+	var contentHeight=wrap.offsetHeight;//get page content height
+	var yoffset=window.pageyoffset; //gets vertical scroll position
+	var y=yoffset+window.innerHeight;
+	
+	if(y>=contentHeight)
+		{
+		wrap.innerHTML += '<div class="newData"></div>';
+		//ajax call to get more dynamic data goes here
+		}
+	var status=document.getElementById('status')
+	status.innerHTML= contentHeight+" | "+y; 
+}
+window.onscroll= yHandler;
+
+
+
+
+
+</script>
+
+<style type="text/css">
+div#status{position:fixed; font-size:24px;}
+div#wrap{width:800px; margin:0px auto;}
+div.newData{height:2000px; background:#09F; margin:10px 0px;}
+
+</style>
+</head>
+<body>
+<div id="status">0 | 0</div>
+<div id="wrap"><img src="temp9.jpg"></div>
+</body>
+</html>
